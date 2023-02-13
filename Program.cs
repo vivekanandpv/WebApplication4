@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication4.DAL;
+using WebApplication4.Services;
 
 namespace WebApplication4
 {
@@ -14,6 +15,7 @@ namespace WebApplication4
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Development"));
             });
             builder.Services.AddControllers();
+            builder.Services.AddScoped<IProductService, ProductService>();
             
             var app = builder.Build();
 
