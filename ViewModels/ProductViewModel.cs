@@ -5,7 +5,7 @@
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public double BasePrice { get; set; }
-        public double TaxRate { get; set; }
+        public decimal BasePrice { get; set; }
+        public decimal TaxRate { get; set; }
     }
 }
