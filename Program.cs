@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebApplication4.DAL;
+
 namespace WebApplication4
 {
     public class Program
@@ -5,9 +8,16 @@ namespace WebApplication4
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            
+            builder.Services.AddDbContext<ProductCatalogContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Development"));
+            });
+            builder.Services.AddControllers();
+            
             var app = builder.Build();
 
-            app.MapGet("/", () => "Hello World!");
+            app.MapControllers();
 
             app.Run();
         }
